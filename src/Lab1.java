@@ -3,13 +3,19 @@ import java.util.Scanner;
 
 /**
  * CET - CS Academic Level 3
- * This class contains the dynamically allocated array and it's processing
- * Student Name: 
- * Student Number:  
+ * Declaration: I declare that this is my own original work and is free from Plagiarism
+ * This class contains the dynamically allocated array, and it's processing
+ * Student Name: Keenan Bewley
+ * Student Number:  041160935
+ * Section Number: 302
  * Course: CST8130 - Data Structures
- * @author/Professor: James Mwangi PhD. 
- * 
+ * Professor: James Mwangi PhD.
+ *
   */
+
+/**
+ * Driver class, contains main method
+ */
 public class Lab1 {
 
 
@@ -19,12 +25,12 @@ public class Lab1 {
 	public static void displayMenu(){
 		System.out.print(
 				"Please select one of the following:\n" +
-						"1: Initialize a default array\n" +
-						"2: Specify the max size of the array\n" +
-						"3: Add value to the array\n" +
-						"4: Display values in the array\n" +
-						"5: Display average of the values, minimum calue, maximum value, max mod min, factorial Max\n" +
-						"6: To Exit\n");
+				"1: Initialize a default array\n" +
+				"2: Specify the max size of the array\n" +
+				"3: Add value to the array\n" +
+				"4: Display values in the array\n" +
+				"5: Display average of the values, minimum value, maximum value, max mod min, factorial Max\n" +
+				"6: To Exit\n");
 	}
 
 	/**
@@ -33,8 +39,8 @@ public class Lab1 {
 	 */
 	public static void main(String[] args) {
 
-		// Initialize Numbers object
-		Numbers numbers = new Numbers();
+		// Initialize Numbers object to null
+		Numbers numbers = null;
 		// Initialize scanner for user input
 		Scanner input = new Scanner(System.in);
 		// Variable to store user selection
@@ -55,24 +61,47 @@ public class Lab1 {
 				// Begin switch / case block
 				switch (choice) {
 					case 1:
-						;
+						// initialize default Numbers Array(4)
+						numbers = new Numbers();
 						break;
 					case 2:
-						;
+						// Initialize array of given value
+						System.out.print("Enter the max size of the array: ");
+						int arraySize = input.nextInt();
+						input.nextLine();
+						numbers = new Numbers(arraySize);
 						break;
 					case 3:
-						;
+						// Adding a value to the array
+						try{
+							numbers.addValue(input);
+						}catch(NullPointerException e){
+							System.err.println("No array initialized! Try again.");
+						}
 						break;
 					case 4:
-						;
+						// Displaying each value in the array
+						try {
+							System.out.println(numbers.toString());
+						}catch(NullPointerException e){
+							System.err.println("No array initialized! Try again.");
+						}
 						break;
 					case 5:
-						;
+						//Displaying all calculations for the values in the Numbers array.
+						try {
+							numbers.findMinMax();
+						}catch(NullPointerException e) {
+							System.err.println("No array initialized! Try again.");
+						}
 						break;
 					case 6:
-						;
+						// Exit option
+						System.out.print("Exiting...");
+						System.exit(0);
 						break;
 					default:
+						// Default option if anything other than 1-6 is given.
 						System.out.println("Invalid choice try again!");
 						break;
 				}
